@@ -82,7 +82,7 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 
 :: 3. Building test projects 
 rem echo Building test projects 
-"%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\\azureDeduplicate.sln" /p:Configuration=Release;VisualStudioVersion=17.0 /verbosity:m /p:Platform="Any CPU" 
+"%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\\azureDeduplicate.sln" /p:Configuration=Release;VisualStudioVersion=14.0 /verbosity:m /p:Platform="Any CPU" 
 
 IF !ERRORLEVEL! NEQ 0 (
  	echo Build failed with ErrorLevel !0!

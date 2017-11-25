@@ -3,28 +3,48 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET with Denis Kirillov</h1>
-    <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
+    <h1>Deduplication with Denis Kirillov</h1>
+    <p class="lead">This is a simple app that I’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
+    <div class="col-md-3">
+        <h2>Check spelling</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Enter Russian word and find out its spelling.
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p>
+            <div>
+                @using (Ajax.BeginForm("SpellCheck", new AjaxOptions { UpdateTargetId = "resultChecking" }))
+                {
+                    <input class="form-control form-group" type="text" name="inputString" />
+                    <input class="btn btn-default" type="submit" name="click" placeholder="Find out!" />
+                }
+            </div>
+        </p>
+        
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="col-md-3">
+        <h2>Answer of Checking</h2>
+        <div id="resultChecking"></div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    
+    <div class="col-md-3">
+        <h2>Check duplication</h2>
+        <p>Find out if two phrases are duplicated.</p>
+        <div>
+            @using (Ajax.BeginForm("testMeth", new AjaxOptions { UpdateTargetId = "result" }))
+            {
+                <input class="form-control " type="text" name="FirstString" />
+                <input class="form-control form-group" type="text" name="SecondString" />
+                <input class="btn btn-default " type="submit" name="click" />
+            }
+        </div>
+    </div>
+    <div class="col-md-3">
+        <h2>Answer of Checking</h2>
+        <div id="result"></div>
     </div>
 </div>
+@Scripts.Render("~/scripts/jquery-3.2.1.min.js")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")

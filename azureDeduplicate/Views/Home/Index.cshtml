@@ -33,7 +33,7 @@
         <h2>Check duplication</h2>
         <p>Find out if two phrases are duplicated.</p>
         <div>
-            @using (Ajax.BeginForm("testMeth", new AjaxOptions { UpdateTargetId = "result" }))
+            @using (Ajax.BeginForm("Deduplicate", new AjaxOptions { UpdateTargetId = "result" }))
             {
                 <input class="form-control " type="text" name="FirstString" />
                 <input class="form-control form-group" type="text" name="SecondString" />

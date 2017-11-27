@@ -1,2 +1,5 @@
 language: CSharp
 solution: azureDeduplicate.sln
+deploy:
+  provider: azureDeduplicate
+  site: azurededuplicate.azurewebsites.net

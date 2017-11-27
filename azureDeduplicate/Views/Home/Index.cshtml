@@ -18,7 +18,8 @@
                 @using (Ajax.BeginForm("SpellCheck", new AjaxOptions { UpdateTargetId = "resultChecking" }))
                 {
                     <input class="form-control form-group" type="text" name="inputString" />
-                    <input class="btn btn-default" type="submit" name="click" placeholder="Find out!" />
+                    <input class="btn btn-default" type="submit" name="click" value="Find out" />
+                    <input class="btn btn-default " type="submit" name="add" value="Add word" />
                 }
             </div>
         </p>
@@ -37,7 +38,7 @@
             {
                 <input class="form-control " type="text" name="FirstString" />
                 <input class="form-control form-group" type="text" name="SecondString" />
-                <input class="btn btn-default " type="submit" name="click" />
+                <input class="btn btn-default " type="submit" name="check" value="Find out" />
             }
         </div>
     </div>

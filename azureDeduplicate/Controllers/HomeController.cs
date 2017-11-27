@@ -1,11 +1,6 @@
 ﻿using azureDeduplicate.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Hosting;
-using NHunspell;
 
 namespace azureDeduplicate.Controllers
 {
@@ -35,11 +30,11 @@ namespace azureDeduplicate.Controllers
             bool isDup = tmp2.IsDuplicate();
             if (isDup)
             {
-                tmp = "Дубли";
+                tmp = "Duplicate";
             }
             else
             {
-                tmp = "Не Дубли";
+                tmp = "No duplicate";
             }
             return PartialView((object)tmp);
         }
@@ -47,19 +42,21 @@ namespace azureDeduplicate.Controllers
         [HttpPost]
         public ActionResult SpellCheck(string inputString)
         {
-            bool ans;
-
-            using (Hunspell hspell = new Hunspell(System.Web.HttpContext.Current.Server.MapPath("~/Assets/Dictionaries/ru_RU.aff"), System.Web.HttpContext.Current.Server.MapPath("~/Assets/Dictionaries/ru_RU.dic")))
+            if (this.HttpContext.Request.Form.AllKeys.GetValue(0).ToString() == "add")
             {
-                ans = hspell.Spell(inputString);
-            }
-            if (ans)
-            {
-                return PartialView((object)"Правильно");
+                RussianDictionary.Instance.AddWord(inputString);
+                return PartialView((object)"The word has added");
             }
             else
             {
-                return PartialView((object)"Неправильно");
+                if (RussianDictionary.Instance.IsRigthSpelling(inputString))
+                {
+                    return PartialView((object)"Right");
+                }
+                else
+                {
+                    return PartialView((object)"Wrong");
+                }
             }
         }
     }

@@ -19,6 +19,14 @@ namespace azureDeduplicate.Tests.Models
 
             Assert.IsTrue(pair.IsDuplicate());
         }
-        
+
+        [TestMethod]
+        public void TestCheckingSpelling()
+        {
+            string str1 = "Экзальтация";
+
+            Assert.IsTrue(RussianDictionary.Instance.IsRigthSpelling(str1));
+        }
+
     }
 }

@@ -22,7 +22,7 @@ namespace azureDeduplicate.Tests.Controllers
             ViewResult result = controller.Index() as ViewResult;
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.IsNotNull(null)
         }
 
         
